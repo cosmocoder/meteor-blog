@@ -8,11 +8,11 @@ Template.navbar.onRendered(function() {
     if ($(window).width() > MQL) {
         var headerHeight = $navbar.height();
 
-        $(window).on('scroll', {previousTop: 0}, function() {
+        $(window).on('scroll', {previousTop: 0}, function(e) {
             var currentTop = $(window).scrollTop();
 
             // check if user is scrolling up
-            if (currentTop < this.previousTop) {
+            if (currentTop < e.data.previousTop) {
 
                 // if scrolling up...
                 if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
@@ -32,7 +32,7 @@ Template.navbar.onRendered(function() {
                 }
             }
 
-            this.previousTop = currentTop;
+            e.data.previousTop = currentTop;
         });
     }
 });
