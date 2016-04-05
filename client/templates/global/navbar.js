@@ -9,7 +9,7 @@ Template.navbar.onRendered(function() {
         var headerHeight = $navbar.height();
 
         $(window).on('scroll', {previousTop: 0}, debounce(function(e) {
-            var currentTop = $(window).scrollTop();console.log(e);
+            var currentTop = $(window).scrollTop();
 
             // check if user is scrolling up
             if (currentTop < e.data.previousTop) {
