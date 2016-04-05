@@ -1,0 +1,7 @@
+<template name="postTags">
+    {{#if tags}}
+        <span class="post-tags">
+            &ndash; {{ BlogLanguage.tags }}: {{blogFormatTags tags}}
+        </span>
+    {{/if}}
+</template>

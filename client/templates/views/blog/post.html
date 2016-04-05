@@ -1,0 +1,24 @@
+<template name="blogPost">
+    {{#if blogReady}}
+        {{#with post}}
+            {{> postHeader}}
+            <!-- Post Content -->
+            <article>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            {{{html}}}
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            {{> shareit shareData}}
+            {{> disqus this}}
+        {{else}}
+            <p>No post found.</p>
+        {{/with}}
+    {{else}}
+        <p>Loading...</p>
+    {{/if}}
+</template>

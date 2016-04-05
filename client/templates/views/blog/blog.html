@@ -1,0 +1,30 @@
+<template name="blog">
+    {{> pageHeader img='/post-bg.jpg' title='Blog Page' subHeading='Check out the all the posts'}}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{#if blogReady}}
+                    {{#each posts}}
+                        <div class="post-preview">
+                            <a href="{{blogPathFor 'blogShow'}}">
+                                <h2 class="post-title">{{title}}</h2>
+                            </a>
+                            <p class="post-meta">
+                                Posted by {{authorName}} on {{blogFormatDate publishedAt}}
+                                {{> postTags }}
+                            </p>
+                            <p class="post-excerpt">{{{excerpt}}}</p>
+                        </div>
+                    {{else}}
+                        <p>No posts found.</p>
+                    {{/each}}
+
+                    {{blogPager}}
+                {{else}}
+                    <p>Loading...</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
