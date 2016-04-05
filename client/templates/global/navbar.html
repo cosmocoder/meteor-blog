@@ -12,17 +12,17 @@
             </div>
             <div class="navbar-collapse collapse" id="header-navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <li class="{{activeTemplateIs 'home'}}">
                         <a href="/">Home</a>
                     </li>
-                    <li>
+                    <li class="{{activeTemplateIs 'about'}}">
                         <a href="/about">About</a>
                     </li>
-                    <li>
+                    <li class="{{activeTemplateIs 'blog'}}">
                         <a href="/blog">Blog</a>
                     </li>
                     {{#if currentUser}}
-                    <li>
+                    <li class="{{activeTemplateIs 'blogAdmin'}}">
                         <a href="{{blogPathFor 'blogAdmin'}}">Admin</a>
                     </li>
                     {{/if}}
