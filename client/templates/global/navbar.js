@@ -8,8 +8,8 @@ Template.navbar.onRendered(function() {
     if ($(window).width() > MQL) {
         var headerHeight = $navbar.height();
 
-        $(window).on('scroll', {previousTop: 0}, function(e) {
-            var currentTop = $(window).scrollTop();
+        $(window).on('scroll', {previousTop: 0}, debounce(function(e) {
+            var currentTop = $(window).scrollTop();console.log(e);
 
             // check if user is scrolling up
             if (currentTop < e.data.previousTop) {
@@ -33,9 +33,26 @@ Template.navbar.onRendered(function() {
             }
 
             e.data.previousTop = currentTop;
-        });
+        }, 50));
     }
 });
+
+
+// function to enable debouncing
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
 
 
 
